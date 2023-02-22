@@ -13,12 +13,12 @@ function Post() {
 
     let navigate = useNavigate();
     useEffect(() => {
-        axios.get(`http://localhost:3001/posts/byId/${id}`).then((Response) => {
+        axios.get(`https://fullstack-posts.herokuapp.com/posts/byId/${id}`).then((Response) => {
             setPostObject(Response.data);
 
         });
 
-        axios.get(`http://localhost:3001/comments/${id}`).then((Response) => {
+        axios.get(`https://fullstack-posts.herokuapp.com/comments/${id}`).then((Response) => {
 
             setComments(Response.data)
         });
@@ -26,7 +26,7 @@ function Post() {
 
     const addComment = () => {
         axios.post(
-            "http://localhost:3001/comments",
+            "https://fullstack-posts.herokuapp.com/comments",
             {
                 commentBody: newComment,
                 PostId: id,
@@ -55,7 +55,7 @@ function Post() {
 
     const deleteComment = (id) => {
         axios
-            .delete(`http://localhost:3001/comments/${id}`, {
+            .delete(`https://fullstack-posts.herokuapp.com/comments/${id}`, {
                 headers: { accessToken: localStorage.getItem("accessToken") },
             }).then(() => {
                 setComments(
@@ -67,7 +67,7 @@ function Post() {
     };
 
     const deletePost = (id) => {
-        axios.delete(`http://localhost:3001/posts/${id}`, {
+        axios.delete(`https://fullstack-posts.herokuapp.com/posts/${id}`, {
             headers: { accessToken: localStorage.getItem("accessToken") },
         }).then(() => {
             navigate("/");
@@ -81,7 +81,7 @@ function Post() {
                 return;
             }
             else {
-                axios.put("http://localhost:3001/posts/title",
+                axios.put("https://fullstack-posts.herokuapp.com/posts/title",
                     {
                         newTitle: newTitle,
                         id: id
@@ -100,7 +100,7 @@ function Post() {
                 return;
             }
             else {
-                axios.put("http://localhost:3001/posts/postText",
+                axios.put("https://fullstack-posts.herokuapp.com/posts/postText",
                     {
                         newText: newPostText,
                         id: id
