@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom';
 import { AuthContext } from "../helpers/AuthContext";
 
+
 function Post() {
 
     let { id } = useParams();
@@ -10,26 +11,54 @@ function Post() {
     const [comments, setComments] = useState([]);
     const [newComment, setNewComment] = useState("");
     const { authState } = useContext(AuthContext);
-
+    const [currentUser, setCurrentUser] = useState({
+        username: authState.username,
+        profilePicture: "",
+    });
+    let idUser = 0;
     let navigate = useNavigate();
     useEffect(() => {
-        axios.get(`https://fullstack-posts.herokuapp.com/posts/byId/${id}`).then((Response) => {
+
+        axios.get(`http://localhost:3001/posts/byId/${id}`).then((Response) => {
             setPostObject(Response.data);
 
         });
 
-        axios.get(`https://fullstack-posts.herokuapp.com/comments/${id}`).then((Response) => {
+        axios.get(`http://localhost:3001/comments/${id}`).then((Response) => {
 
             setComments(Response.data)
         });
+        comments.filter(function (comment) {
+
+            axios.get(`http://localhost:3001/auth/basicinfo/${comment.UserId}`)
+                .then((response) => {
+                    //setUsername(response.data.username);
+                    const imageUrl = response.data.profilePicture.substr(76);
+
+                    setCurrentUser({ ...currentUser, profilePicture: imageUrl });
+
+                });
+        })
+        // axios.get(`http://localhost:3001/auth/basicinfo/${authState.id}`)
+        //     .then((response) => {
+        //         //setUsername(response.data.username);
+        //         const imageUrl = response.data.profilePicture.substr(76);
+
+        //         setCurrentUser({ ...currentUser, profilePicture: imageUrl });
+
+        //     });
+
     }, []);
 
     const addComment = () => {
+
         axios.post(
-            "https://fullstack-posts.herokuapp.com/comments",
+            "http://localhost:3001/comments",
             {
                 commentBody: newComment,
                 PostId: id,
+                UserId: authState.id,
+
             },
             {
                 headers: {
@@ -43,7 +72,7 @@ function Post() {
             else {
                 const commentToAdd = {
                     commentBody: newComment,
-                    username: response.data.username,
+                    username: authState.username,
                     id: response.data.id,
                 };
                 setComments([...comments, commentToAdd]);
@@ -51,11 +80,24 @@ function Post() {
             }
 
         });
+        //need to fix this
+        comments.filter(function (comment) {
+            console.log(comment.UserId);
+
+            axios.get(`http://localhost:3001/auth/basicinfo/${comment.UserId}`)
+                .then((response) => {
+                    //setUsername(response.data.username);
+                    const imageUrl = response.data.profilePicture.substr(76);
+
+                    setCurrentUser({ ...currentUser, profilePicture: imageUrl });
+
+                });
+        })
     };
 
     const deleteComment = (id) => {
         axios
-            .delete(`https://fullstack-posts.herokuapp.com/comments/${id}`, {
+            .delete(`http://localhost:3001/comments/${id}`, {
                 headers: { accessToken: localStorage.getItem("accessToken") },
             }).then(() => {
                 setComments(
@@ -67,7 +109,7 @@ function Post() {
     };
 
     const deletePost = (id) => {
-        axios.delete(`https://fullstack-posts.herokuapp.com/posts/${id}`, {
+        axios.delete(`http://localhost:3001/posts/${id}`, {
             headers: { accessToken: localStorage.getItem("accessToken") },
         }).then(() => {
             navigate("/");
@@ -81,7 +123,7 @@ function Post() {
                 return;
             }
             else {
-                axios.put("https://fullstack-posts.herokuapp.com/posts/title",
+                axios.put("http://localhost:3001/posts/title",
                     {
                         newTitle: newTitle,
                         id: id
@@ -100,7 +142,7 @@ function Post() {
                 return;
             }
             else {
-                axios.put("https://fullstack-posts.herokuapp.com/posts/postText",
+                axios.put("http://localhost:3001/posts/postText",
                     {
                         newText: newPostText,
                         id: id
@@ -168,15 +210,24 @@ function Post() {
                 <div className="listOfComments">
                     {comments.map((comment, key) => {
                         return (
+
                             <div key={key} className="comment">
-                                {comment.commentBody}
-                                <label> Username: {comment.username}</label>
-                                {authState.username === comment.username && (
-                                    <button onClick={() => {
-                                        deleteComment(comment.id);
-                                    }}> X </button>
-                                )}
+                                <div className="comment-header">
+
+                                    <div className='username'>
+                                        {comment.username}
+                                    </div>
+                                    {authState.username === comment.username && (
+                                        <button className='delete-button' onClick={() => {
+                                            deleteComment(comment.id);
+                                        }}> X </button>
+                                    )}
+                                </div>
+                                <div className='comment-body'>
+                                    {comment.commentBody}
+                                </div>
                             </div>
+
                         );
                     })}
                 </div>

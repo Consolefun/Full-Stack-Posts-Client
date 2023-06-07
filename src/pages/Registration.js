@@ -1,11 +1,14 @@
-import React from 'react'
+import { React, useState } from 'react'
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function Registration() {
+    let navigate = useNavigate();
     const initialValues = {
         username: "",
         password: "",
+        profile_picture: null,
     };
 
     const validationSchema = Yup.object().shape({
@@ -14,18 +17,23 @@ function Registration() {
     });
 
     const onSubmit = (data) => {
-        axios.post("https://fullstack-posts.herokuapp.com/auth", data).then(() => {
+        axios.post("http://localhost:3001/auth", data).then(() => {
+            navigate("/login");
             console.log(data);
         });
     };
 
     return (
-        <div>
+
+        <div className='regForm'>
+
             <Formik
                 initialValues={initialValues}
                 onSubmit={onSubmit}
                 validationSchema={validationSchema}>
                 <Form className="formContainer">
+
+
                     <label>Username: </label>
                     <ErrorMessage name="username" component="span" />
                     <Field
@@ -48,6 +56,9 @@ function Registration() {
                 </Form>
             </Formik>
         </div>
+
+
+
     )
 }
 

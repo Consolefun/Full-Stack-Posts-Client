@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 function ChangePassword() {
 
     const [oldPassword, setOldPassword] = useState("");
     const [newPassword, setNewPassword] = useState("");
-
+    let navigate = useNavigate();
     const changePassword = () => {
-        axios.put("https://fullstack-posts.herokuapp.com/auth/changepassword", {
+        axios.put("http://localhost:3001/auth/changepassword", {
             oldPassword: oldPassword,
             newPassword: newPassword,
         }, {
@@ -17,7 +18,13 @@ function ChangePassword() {
             if (response.data.error) {
                 alert(response.data.error);
             }
+            else {
+                //Redirect to main page
+                navigate("/");
+            }
         });
+
+
     };
     return (
         <div>
@@ -32,7 +39,7 @@ function ChangePassword() {
                     setNewPassword(event.target.value);
                 }}
             ></input>
-            <button onClick={changePassword}> Save Changes</button>
+            <button className="changePassword" onClick={changePassword}> Save Changes</button>
         </div>
     )
 }

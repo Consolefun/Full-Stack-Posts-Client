@@ -13,7 +13,7 @@ function Login() {
     const login = () => {
 
         const data = { username: username, password: password };
-        axios.post("https://fullstack-posts.herokuapp.com/auth/login", data).then(async (response) => {
+        axios.post("http://localhost:3001/auth/login", data).then(async (response) => {
             if (response.data.error) {
                 alert(response.data.error);
             }
@@ -26,7 +26,6 @@ function Login() {
                 });
                 navigate("/");
             }
-            console.log(response.data);
         })
     };
     return (
