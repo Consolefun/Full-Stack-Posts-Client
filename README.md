@@ -43,7 +43,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/0043220a-afb3-40c5-9c54-2edf8aa5e689)
 
 # Create a  post
-![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/b7581b51-4d18-4b25-ba28-db0ee27a8056)
+![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/d5a4d6c5-0422-4613-958c-484b09fab298)
 
 # Change password
 ![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/c6f8d878-b5f6-422c-a122-842bd83d467a)
