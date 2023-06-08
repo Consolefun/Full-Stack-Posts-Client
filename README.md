@@ -33,4 +33,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 # User profile website
 ![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/480f1fef-10d1-4c5b-a138-b250192adce3)
 
+# User's post and comment section
+![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/0043220a-afb3-40c5-9c54-2edf8aa5e689)
+
+
 
