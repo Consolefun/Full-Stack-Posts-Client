@@ -27,6 +27,12 @@ Open [
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
+# Registration page
+![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/be30bb4f-5e03-4d1c-ba86-b4b7a1ca8e95)
+
+# Login Page
+![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/67e37dd0-09a5-4b43-8261-edfd61a3a00f)
+
 # Update user Information
 ![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/953d34bc-049a-4cf5-a44c-888c6d6616ad)
 
