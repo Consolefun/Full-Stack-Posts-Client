@@ -36,5 +36,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 # User's post and comment section
 ![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/0043220a-afb3-40c5-9c54-2edf8aa5e689)
 
+# Create a  post
+![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/b7581b51-4d18-4b25-ba28-db0ee27a8056)
+
 
 
