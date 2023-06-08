@@ -48,4 +48,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 # Change password
 ![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/c6f8d878-b5f6-422c-a122-842bd83d467a)
 
+# MySQL Database for the website
+![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/6497aacd-b97d-4460-bf54-92dd45364109)
 
