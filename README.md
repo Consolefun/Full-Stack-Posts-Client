@@ -33,6 +33,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 # Login Page
 ![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/67e37dd0-09a5-4b43-8261-edfd61a3a00f)
 
+# Home page
+![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/e1975b19-c954-48a4-b7bf-c531ebd573d5)
+
 # Update user Information
 ![image](https://github.com/Consolefun/Full-Stack-Posts-Client/assets/46702069/953d34bc-049a-4cf5-a44c-888c6d6616ad)
 
